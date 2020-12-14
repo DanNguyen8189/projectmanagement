@@ -1,5 +1,7 @@
 # projectmanagement
 
+deployed at https://projectmanagement157.herokuapp.com/
+
 ## Deploying in Heroku after developing on Repl.it
 
 1. in index.js, make sure to change to app.listen(3000, () => console.log('server started'));
