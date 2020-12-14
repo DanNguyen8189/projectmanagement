@@ -1,0 +1,105 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <p>Project Name:</p>
+      <p>{{ name }}</p>
+    </div>
+    <div class="col-sm-4">
+      <p>Company/Client:</p>
+      <p>{{ clientname }}</p>
+    </div>
+    <div class="col-sm-4">
+      <p>Primary contact(email):</p>
+      <p>{{ contact }}</p>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-sm-4">
+      <p>Estimated cost:</p>
+      <p>{{ estimatedcost | currency }}</p>
+    </div>
+    <div class="col-sm-4">
+      <p>Status:</p>
+      <p>{{ status }}</p>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-sm-12">
+      <p>Description:</p>
+      <p>{{ details }}</p>
+    </div>
+  </div>
+  <h2 class="mt-5">Milestones</h2>
+  <table class="table table-striped table-bordered mt-3">
+    <thead>
+      <tr>
+          <th>Milestone</th>
+          <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="milestone in milestones">
+        <td>{{ milestone.name }}</td>
+        <td>{{ milestone.status }}</td>
+        <!--<td><button ng-click="openMilestones(project._id)">Milestones</button></td>
+        <td><button ng-click="openForm(project.clientcode)">Edit</button></td>
+        <td><button ng-click="deleteProject(project.clientcode)">Delete</button></td>-->
+        <td><button 
+          class="btn btn-secondary"
+          data-toggle="modal" data-target="#milestoneDetails"
+          ng-click="viewMilestone(milestone)">View</button></td>
+      </tr>
+    </tbody>
+  </table>
+    <div
+      id="milestoneDetails" class="modal fade"
+      ng-show="viewMilestoneView">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-hidden="true"
+              ng-click="closeMilestone()"
+            >
+              &times;
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label>Milestone:</label>
+              <!--<input  type="text" ng-model="nameInput" class="form-control" required />-->
+              <p>{{ milestoneName }}</p>
+            </div>
+            <div class="form-group">
+              <label>Description:</label>
+              <p>{{ milestoneDescription }}</p>
+            </div>
+            <div class="form-group">
+              <label>Status:</label>
+              <p>{{ milestoneStatus }}</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <input
+              type="button"
+              class="btn btn-default"
+              ng-click="closeMilestone()"
+              data-dismiss="modal"
+              value="Cancel"
+            />
+            <input
+              type="button"
+              class="btn btn-info"
+              value="Approve"
+              ng-disabled="milestoneStatus == 'approved'"
+              ng-click="approveMilestone()"
+              data-dismiss="modal"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

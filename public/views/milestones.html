@@ -1,0 +1,96 @@
+<div ng-init="getProjectMilestones()" class="container">
+  <h2>{{ projectName }} portal milestones</h2>
+  <button 
+    class="btn btn-success mt-4"
+    data-toggle="modal" data-target="#milestoneForm"
+    ng-click="openForm('add', null)">
+      <i class="material-icons">&#xE147;</i>
+      <span>Add New Milestone</span>
+  </button>
+
+  <table class="table table-striped table-bordered mt-1">
+    <thead>
+      <tr>
+          <th>Milestone</th>
+          <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="milestone in milestones">
+        <td>{{ milestone.name }}</td>
+        <td>{{ milestone.status }}</td>
+        <!--<td><button ng-click="openMilestones(project._id)">Milestones</button></td>
+        <td><button ng-click="openForm(project.clientcode)">Edit</button></td>
+        <td><button ng-click="deleteProject(project.clientcode)">Delete</button></td>-->
+        <td><button 
+          class="btn btn-secondary"
+          data-toggle="modal" data-target="#milestoneForm"
+          ng-click="openForm('edit', milestone)">Edit</button></td>
+        <td><button 
+          class="btn btn-secondary"
+          ng-click="removeMilestone(milestone._id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+    <div
+      id="milestoneForm" class="modal fade"
+      ng-show="addMilestoneView || editMilestoneView">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 ng-show="addMilestoneView"
+            class="modal-title">Add Milestone</h4>
+            <h4 ng-show="editMilestoneView"
+            class="modal-title">Edit Milestone</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-hidden="true"
+              ng-click="closeForm()"
+            >
+              &times;
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label>Name</label>
+              <input  type="text" ng-model="nameInput" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <textarea type="text" ng-model="descriptionInput" class="form-control" required />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <input
+              id="editCancel"
+              type="button"
+              class="btn btn-default"
+              ng-click="closeForm()"
+              data-dismiss="modal"
+              value="Cancel"
+            />
+            <input
+              ng-show="addMilestoneView"
+              id="editSave"
+              type="button"
+              class="btn btn-info"
+              value="Save"
+              data-dismiss="modal"
+              ng-click="addMilestone()"
+            />
+            <input
+              ng-show="editMilestoneView"
+              id="editSave"
+              type="button"
+              class="btn btn-info"
+              value="Save"
+              data-dismiss="modal"
+              ng-click="editMilestone()"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
