@@ -1,6 +1,6 @@
 # projectmanagement
 
-##Deploying in Heroku after developing on Repl.it
+## Deploying in Heroku after developing on Repl.it
 
 1. in index.js, make sure to change to app.listen(3000, () => console.log('server started'));
 to app.listen(process.env.PORT || 3000, () => console.log('server started')); 
