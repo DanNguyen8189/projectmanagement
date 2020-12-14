@@ -2,6 +2,19 @@
 
 deployed at https://projectmanagement157.herokuapp.com/
 
+This is a MEAN full stack application! This is a project management app, where admin members can create projects and their milestones 
+for clients to view and approve.
+
+#### Admin View: 
+
+Admin can create projects for their clients. Each project will be assigned a client code that the client can use to access it later.
+Admin can add multiple milestones to each project, to be approved by the client.
+
+#### Client View:
+Client can use their client code to log in and view their project. Clients can approve milestones that the admin included with 
+that project.
+
+
 ## Deploying in Heroku after developing on Repl.it
 
 1. in index.js, make sure to change to app.listen(3000, () => console.log('server started'));
