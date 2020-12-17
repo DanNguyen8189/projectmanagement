@@ -199,7 +199,7 @@ myApp.controller("projectAdminViewController", function($scope, $routeParams, $h
 
   //user confirms adding project
   $scope.addProject = function(){
-    $scope.addProjectError = "";
+    $scope.projectFormError = "";
     if ($scope.statusInput == ""){
       $scope.statusInput = "in progress";
     }
@@ -212,7 +212,7 @@ myApp.controller("projectAdminViewController", function($scope, $routeParams, $h
       status: $scope.statusInput,
       clientcode: $scope.clientCodeInput
     };
-    alert(JSON.stringify(projectData));
+    //alert(JSON.stringify(projectData));
 
     $http
       .post("/api/project/add", projectData).then(function(response) {
@@ -222,14 +222,14 @@ myApp.controller("projectAdminViewController", function($scope, $routeParams, $h
       }, function errorCallback(response) {
     // called asynchronously if an error occurs
     // or server returns response with an error status.
-      $scope.addProjectError = JSON.stringify(response.data);
+      $scope.projectFormError = JSON.stringify(response.data);
       alert("Error when adding project: " + JSON.stringify(response.data));
     });
   };
 
   //user confirms editting project
   $scope.editProject = function(){
-    $scope.addProjectError = "";
+    $scope.projectFormError = "";
     let projectData = {
       name: $scope.projectNameInput,
       details: $scope.projectDetailsInput,
@@ -248,13 +248,13 @@ myApp.controller("projectAdminViewController", function($scope, $routeParams, $h
       }, function errorCallback(response) {
     // called asynchronously if an error occurs
     // or server returns response with an error status.
-      $scope.addProjectError = JSON.stringify(response.data);
+      $scope.projectFormError = JSON.stringify(response.data);
       alert("Error when editting project: " + JSON.stringify(response.data));
     });
   };
 
   $scope.deleteProject = function(clientCode){
-    alert("delete btn" + clientCode);
+    //alert("delete btn" + clientCode);
     let filter = { clientcode: clientCode };
     filter_string = "?filter=" + JSON.stringify(filter);
     $http

@@ -1,6 +1,14 @@
 <form name="loginForm" class="container">
   <h2>Client Access</h2>
   <p>Client Code</p>
-  <input type="text" required name="clientCode" ng-model="clientCode" class="form-control mb-4 mr-2"/>
-  <button type="button" id="getWeatherBtn" class="btn btn-warning mb-4" ng-disabled="weatherForm.$invalid" ng-click="login(clientCode)">Login</button>
+  <input 
+    type="text" 
+    required 
+    name="clientCode" 
+    ng-model="clientCode" 
+    class="form-control mb-4 mr-2"/>
+  <button 
+    type="button" 
+    class="btn btn-warning mb-4" ng-disabled="weatherForm.$invalid" 
+    ng-click="login(clientCode)">Login</button>
 </form>

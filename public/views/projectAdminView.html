@@ -1,179 +1,172 @@
 <div class="container">
   <h2>Projects</h2>
-      <button
-        ng-click="openForm('add', null)"
-        class="btn btn-success mt-4"
-        data-toggle="modal"
-        ><i class="material-icons">&#xE147;</i>
-          <span>Add New Project</span></button>
-            <!--<button id="deleteAllEmployees" class="btn btn-danger">
-              <i class="material-icons">&#xE872;</i>
-              <span>Delete All</span>
-            </button>-->
-  
+    <button
+      ng-click="openForm('add', null)"
+      class="btn btn-success mt-4"
+      data-toggle="modal"
+      ><i class="material-icons">&#xE147;</i>
+        <span>Add New Project</span></button>
 
-   <!-- Add project section -->
-    <div ng-show="addProjectVisible || editProjectVisible" class="container jumbotron py-4 px-4 text-center">
+   <!-- Add/edit project section -->
+  <div 
+    class="modal-dialog" 
+    ng-show="addProjectVisible || editProjectVisible" class="container jumbotron py-4 px-4 text-center">
+    <div class="modal-content">
       <form name="projectForm">
-        <h1 ng-show="addProjectVisible" class="h3 mb-3">Add New Project</h1>
-        <h1 ng-show="editProjectVisible" class="h3 mb-3">Edit Project</h1>       
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Project Name</label>
-          <div class="col-sm-10">
+        <div class="modal-header">
+          <h1 
+            ng-show="addProjectVisible" 
+            class="h3 mb-3">Add New Project</h1>
+          <h1 
+            ng-show="editProjectVisible" 
+            class="h3 mb-3">Edit Project</h1> 
+        </div>
+        <div class="modal-body">      
+          <div class="form-group">
+            <label class="col-form-label">Project Name</label>
             <input 
               ng-model="projectNameInput" 
               name="projectNameInput"
               class="form-control" 
-              placeholder="Project name" 
               required/>
-            </div>
           </div>
-        <div 
-          class="alert alert-danger mt-0 mb-3 hidden"
-          ng-show="projectForm.projectNameInput.$touched && projectForm.projectNameInput.$error.required">Required Field</div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Details</label>
-          <div class="col-sm-10">
-        <input 
-          ng-model="projectDetailsInput"
-          name="projectDetailsInput"
-          class="form-control" 
-          placeholder="Project details"
-          />
-        </div>
+          <div 
+            class="alert alert-danger mt-0 mb-3 hidden"
+            ng-show="projectForm.projectNameInput.$touched && projectForm.projectNameInput.$error.required">Required Field</div>
+          <div class="form-group">
+            <label class="col-form-label">Details</label>
+          <textarea type="text"
+            ng-model="projectDetailsInput"
+            name="projectDetailsInput"
+            class="form-control" 
+            />
         </div>
 
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Client Name</label>
-          <div class="col-sm-10">        
-        <input 
-          ng-model="clientNameInput"
-          name="clientNameInput"
-          class="form-control" 
-          placeholder="Client name" 
-          required/>
-        </div>
+        <div class="form-group">
+          <label class="col-form-label">Client Name</label>
+          <input 
+            ng-model="clientNameInput"
+            name="clientNameInput"
+            class="form-control" 
+            required/>
         </div>
         <div 
           class="alert alert-danger mt-0 mb-3 hidden"
           ng-show="projectForm.clientNameInput.$touched && projectForm.clientNameInput.$error.required">Required Field</div>
         
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Email Contact</label>
-          <div class="col-sm-10">
-        <input 
-          ng-model="emailInput"
-          name="emailInput"
-          ng-pattern="/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/"
-          type="email" 
-          class="form-control" 
-          placeholder="Email Contact" 
-          required 
-          autofocus/>
-        </div>
+        <div class="form-group">
+          <label class="col-form-label">Email Contact</label>
+          <input 
+            ng-model="emailInput"
+            name="emailInput"
+            ng-pattern="/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/"
+            type="email" 
+            class="form-control" 
+            required 
+            autofocus/>
         </div>
         <div 
           class="alert alert-danger mt-0 mb-3 hidden"
           ng-show="projectForm.emailInput.$touched && projectForm.emailInput.$invalid">Invalid email</div>
 
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Estimated Cost</label>
-          <div class="col-sm-10">
-        <input 
-          ng-model="estimatedCostInput"
-          name="estimatedCostInput"
-          class="form-control" 
-          placeholder="Estimated cost"
-          type="number"
-          />
-        </div>
+        <div class="form-group">
+          <label class="col-form-label">Estimated Cost</label>
+          <input 
+            ng-model="estimatedCostInput"
+            name="estimatedCostInput"
+            class="form-control" 
+            type="number"
+            />
         </div>
 
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Status</label>
-          <div class="col-sm-10">
-        <!--<input 
-          ng-model="statusInput"
-          name="statusInput"
-          class="form-control" 
-          placeholder="Status" 
-          />-->
-            <select 
-              ng-model="statusInput"
-              class="form-control"
-              required>
-              <option value="in progress">in progress</option>
-              <option value="completed">completed</option>
-              <option value="halted">halted</option>
-            </select>  
-          </div>
+        <div class="form-group">
+          <label class="col-form-label">Status</label>
+          <select 
+            ng-model="statusInput"
+            class="form-control"
+            required>
+            <option value="in progress">in progress</option>
+            <option value="completed">completed</option>
+            <option value="halted">halted</option>
+          </select>  
         </div>
 
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Client</label>
-          <div class="col-sm-10">
-        <input 
-          ng-model="clientCodeInput"
-          name="clientCodeInput"
-          class="form-control" 
-          placeholder="Client code" 
-          required/>
-          </div>
+        <div class="form-group">
+          <label class="col-form-label">Client Code</label>
+          <input 
+            ng-model="clientCodeInput"
+            name="clientCodeInput"
+            class="form-control" 
+            required/>
         </div>
         <div 
           class="alert alert-danger mt-0 mb-3 hidden"
           ng-show="projectForm.clientCodeInput.$touched && projectForm.clientCodeInput.$error.required">Required Field</div>
 
-        <button 
-          ng-show="addProjectVisible"
-          ng-disabled = "projectForm.$invalid"
-          class="btn btn-lg btn-primary" type="button" 
-          ng-click="addProject()">
-            Add
-        </button>
-        <button 
-          ng-show="editProjectVisible"
-          ng-disabled = "projectForm.$invalid"
-          class="btn btn-lg btn-primary" type="button" 
-          ng-click="editProject()">
-            Done
-        </button>
-        <button 
-          class="btn btn-lg btn-primary" type="button" 
-          ng-click="closeForm()">
-            Cancel
-        </button>
+        <div class="modal-footer">
+          <button 
+            class="btn btn-default" 
+            type="button" 
+            ng-click="closeForm()">
+              Cancel
+          </button>
+          <button 
+            ng-show="addProjectVisible"
+            ng-disabled = "projectForm.$invalid"
+            class="btn btn-primary" 
+            type="button" 
+            ng-click="addProject()">
+              Add
+          </button>
+          <button 
+            ng-show="editProjectVisible"
+            ng-disabled = "projectForm.$invalid"
+            class="btn btn-primary" 
+            type="button" 
+            ng-click="editProject()">
+              Done
+          </button>
 
-        <div 
-        class="alert alert-danger mt-3 mb-0 hidden"
-        ng-show="addProjectError">{{ addProjectError }}</div>
+          <div 
+            class="alert alert-danger mt-3 mb-0 hidden"
+            ng-show="projectFormError">{{ projectFormError }}
+          </div>
+        </div>
       </form>
     </div>
+    </div>
+  </div>
 
-    <table class="table table-striped table-bordered mt-1">
-        <thead>
-            <tr>
-                <th>Project Name</th>
-                <th>Status</th>
-                <th>Client/Company</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="project in projects">
-                <td>{{ project.name }}</td>
-                <td>{{ project.status }}</td>
-                <td>{{ project.clientname }}</td>
-                <td><button 
-                  class="btn btn-secondary"
-                  ng-click="openMilestones(project._id)">Milestones</button></td>
-                <td><button 
-                  class="btn btn-secondary"
-                  ng-click="openForm('edit', project.clientcode)">Edit</button></td>
-                <td><button 
-                  class="btn btn-secondary"
-                  ng-click="deleteProject(project.clientcode)">Delete</button></td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table table-striped table-bordered mt-1">
+    <thead>
+      <tr>
+        <th>Project Name</th>
+        <th>Status</th>
+        <th>Client/Company</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="project in projects">
+        <td>{{ project.name }}</td>
+        <td>{{ project.status }}</td>
+        <td>{{ project.clientname }}</td>
+        <td>
+          <button 
+            class="btn btn-secondary"
+            ng-click="openMilestones(project._id)">Milestones</button>
+        </td>
+        <td>
+          <button 
+            class="btn btn-secondary"
+            ng-click="openForm('edit', project.clientcode)">Edit</button>
+        </td>
+        <td>
+          <button 
+            class="btn btn-secondary"
+            ng-click="deleteProject(project.clientcode)">Delete</button>
+        </td>
+        </tr>
+      </tbody>
+  </table>
 </div>
