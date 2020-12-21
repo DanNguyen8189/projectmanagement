@@ -9,6 +9,7 @@ for clients to view and approve.
 
 Admin members can create projects for their clients. Each project will be assigned a client code that the client can use to access later.
 Admin members can add multiple milestones to each project, each to be approved by the client.
+
 *currently there is no authentication for admin members
 
 #### Client View:
