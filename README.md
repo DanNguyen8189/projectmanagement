@@ -7,12 +7,13 @@ for clients to view and approve.
 
 #### Admin View: 
 
-Admin can create projects for their clients. Each project will be assigned a client code that the client can use to access it later.
-Admin can add multiple milestones to each project, to be approved by the client.
+Admin members can create projects for their clients. Each project will be assigned a client code that the client can use to access later.
+Admin members can add multiple milestones to each project, each to be approved by the client.
+*currently there is no authentication for admin members
 
 #### Client View:
-Client can use their client code to log in and view their project. Clients can approve milestones that the admin included with 
-that project.
+Clients can use their client code to log in and view the project assigned to them. Clients can approve project milestones from here.
+
 
 
 ## Deploying in Heroku after developing on Repl.it
